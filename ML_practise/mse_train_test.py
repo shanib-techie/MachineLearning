@@ -18,7 +18,7 @@ Soch tu exam ke exact same questions rat leta hai
 → exam me full marks
 → but real knowledge = zero
 
-Train-test split = practice vs real exam"""
+# Train-test split = practice vs real exam"""
 
 # import pandas as pd
 # from sklearn.model_selection import train_test_split
@@ -66,34 +66,34 @@ Train-test split = practice vs real exam"""
 
 
 
-import pandas as pd
-from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_absolute_error
+# import pandas as pd
+# from sklearn.linear_model import LinearRegression
+# from sklearn.model_selection import train_test_split
+# from sklearn.metrics import mean_absolute_error
 
-df = pd.DataFrame({
-    "months" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
-    "sales" : [100,200,280,360,400,450,490,520,540,555,580,600,610,612,620]
-})
+# df = pd.DataFrame({
+#     "months" : [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
+#     "sales" : [100,200,280,360,400,450,490,520,540,555,580,600,610,612,620]
+# })
 
-X = df[["months"]]
-y = df["sales"]
+# X = df[["months"]]
+# y = df["sales"]
 
-X_train , X_Test, y_train , y_test = train_test_split (
-      X,y, test_size=0.4
-)
+# X_train , X_Test, y_train , y_test = train_test_split (
+#       X,y, test_size=0.4
+# )
 
-model = LinearRegression()
-model.fit(X_train,y_train)
+# model = LinearRegression()
+# model.fit(X_train,y_train)
 
-y_pridict = model.predict(X_Test)
+# y_pridict = model.predict(X_Test)
 
-mse = mean_absolute_error(y_test,y_pridict)
+# mse = mean_absolute_error(y_test,y_pridict)
 
 
-print("Test Index:", y_test.index.tolist())
+# print("Test Index:", y_test.index.tolist())
 
-print("ACTUAL VALUE :",list(y_test))
-print("PRIDICT VALUE : ",list(y_pridict))
-print("MSE : ",mse)
+# print("ACTUAL VALUE :",list(y_test))
+# print("PRIDICT VALUE : ",list(y_pridict))
+# print("MSE : ",mse)
 
