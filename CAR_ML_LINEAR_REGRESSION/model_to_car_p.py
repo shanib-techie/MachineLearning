@@ -26,32 +26,48 @@ y_pridict = model.predict(X_test)
 print(y_pridict)
 
 rsme =root_mean_squared_error(y_pridict,y_test)
-print("root_mean_squared_error: ",rsme)
+# print("root_mean_squared_error: ",rsme)
 
 
 
 
 
-# Step 1: enter your raw values here
-new_data = {
-    "MANUFACTURE": 2020,
-    "PRE_OWNERS": 1,
-    "SEATER": 5,
-    "MILEAGE": 18,
-    "FUEL_TYPE": "PETROL",        # one of: PETROL, DIESEL, CNG, ELECTRIC
-    "ACCIDENT_HISTORY": "NO"      # one of: YES, NO
-}
+# # Step 1: enter your raw values here
+# new_data = {
+#     "MANUFACTURE": 2020,
+#     "PRE_OWNERS": 1,
+#     "SEATER": 5,
+#     "MILEAGE": 18,
+#     "FUEL_TYPE": "PETROL",        # one of: PETROL, DIESEL, CNG, ELECTRIC
+#     "ACCIDENT_HISTORY": "NO"      # one of: YES, NO
+# }
 
-# Step 2: convert to a DataFrame
-new_df = pd.DataFrame([new_data])
+def predict_price(manufacture, owners, seater,
+                  mileage, fuel, accident):
 
-# Step 3: apply the same one-hot encoding as training data
-new_df_encoded = pd.get_dummies(new_df, columns=["FUEL_TYPE", "ACCIDENT_HISTORY"])
+    car = pd.DataFrame([{
+        "MANUFACTURE": manufacture,
+        "PRE_OWNERS": owners,
+        "SEATER": seater,
+        "MILEAGE": mileage,
+        "FUEL_TYPE": fuel,
+        "ACCIDENT_HISTORY": accident
+    }])
 
-# Step 4: align columns with X (adds any missing dummy columns as 0, drops extras, keeps order same)
-new_df_encoded = new_df_encoded.reindex(columns=X.columns, fill_value=0)
+    car = pd.get_dummies(
+        car,
+        columns=["FUEL_TYPE", "ACCIDENT_HISTORY"]
+    )
 
-# Step 5: predict
-predicted_price = model.predict(new_df_encoded)
+    car = car.reindex(columns=X.columns, fill_value=0)
 
-print("Predicted Price:", predicted_price[0])
+    return model.predict(car)[0]
+
+
+
+
+price = predict_price(
+    2011, 5, 7, 10, "PETROL", "YES"
+)
+
+print("Predicted Price:", price)
