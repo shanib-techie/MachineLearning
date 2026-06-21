@@ -26,7 +26,7 @@ y_pridict = model.predict(X_test)
 print(y_pridict)
 
 rsme =root_mean_squared_error(y_pridict,y_test)
-# print("root_mean_squared_error: ",rsme)
+print("root_mean_squared_error: ",rsme)
 
 
 
@@ -65,9 +65,15 @@ def predict_price(manufacture, owners, seater,
 
 
 
-
+manufacture_year = str(input("ENTER THE MANUFACTURE YEAR : "))
+owners = int(input("ENTER THE PREVIOUS OWNERS : "))
+seater = int(input("ENTER THE SEATER CAPACITY : "))
+mileage = int(input("ENTER THE MILEAGE OF VICHLE : "))
+FUEL =   str(input("ENTER THE FUEL TYPE  (PETROL/DIESEL/CNG/ELECTRIC) : "))
+ACC_HISTORY = str(input("DID ANY PREVIOUS ACCIDENT HISTORY (YES/NO) : "))
 price = predict_price(
-    2011, 5, 7, 10, "PETROL", "YES"
+
+    manufacture_year, owners, seater, mileage, FUEL, ACC_HISTORY
 )
 
 print("Predicted Price:", price)
