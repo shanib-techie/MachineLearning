@@ -58,9 +58,9 @@ print("\nCONFUSION METRIC ",cm)
 # )
 
 new_customer = pd.DataFrame  ({
-      "Age" : [50],
-      "Annual Income (k$)" : [60],
-      "Spending Score (1-100)" : [88],
+      "Age" : [29],
+      "Annual Income (k$)" : [500],
+      "Spending Score (1-100)" : [90],
      "Gender_Female" : [0],
       "Gender_Male" : [1]
 })
